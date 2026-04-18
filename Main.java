@@ -11,7 +11,7 @@ public class Main {
 
         do {
             System.out.println("\n=== SISTEMA DE GESTÃO DE ACADEMIA ===");
-            System.out.println("Selecione uma opção: ");
+            System.out.print("Selecione uma opção: ");
             op = scanner.nextInt();
             switch (op) {
                 case 1:
@@ -145,8 +145,11 @@ public class Main {
         System.out.print("CREF: ");
         String cref = scanner.next();
 
+        System.out.println("Especialidade: ");
+        String especialidade = scanner.next();
+
         // Criando o objeto Instrutor (considerando a versão com extends Pessoa)
-        Instrutor instrutor = new Instrutor(nome, cpf, cref);
+        Instrutor instrutor = new Instrutor(nome, cpf, cref, especialidade);
 
         // Adiciona na lista de pessoas (polimorfismo: Instrutor é uma Pessoa)
         pessoas.add(instrutor);

@@ -2,9 +2,10 @@ public class Instrutor extends Pessoa {
     private String cref;
     private String especialidade;
 
-    public Instrutor(String nome, String cpf, String cref) {
+    public Instrutor(String nome, String cpf, String cref, String especialidade) {
         super(nome, cpf);
         this.cref = cref;
+        this.especialidade = especialidade;
     }
 
     public String getCref() {
