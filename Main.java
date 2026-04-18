@@ -10,11 +10,16 @@ public class Main {
         List<Treino> treinos = new ArrayList<>();
 
         do {
-            System.out.println("\nSelecione uma opção: ");
+            System.out.println("\n=== SISTEMA DE GESTÃO DE ACADEMIA ===");
+            System.out.println("Selecione uma opção: ");
             op = scanner.nextInt();
             switch (op) {
                 case 1:
                     cadastrarAluno(scanner, pessoas);
+                    break;
+
+                case 2:
+                    cadastrarInstrutor(scanner, pessoas);
                     break;
 
                 case 5:
@@ -34,7 +39,8 @@ public class Main {
 
         List<Aluno> alunos = new ArrayList<>();
 
-        // filtra somente os alunos da lista de pessoas (já que ele puxa o cadastro de pessoas).
+        // filtra somente os alunos da lista de pessoas (já que ele puxa o cadastro de
+        // pessoas).
         for (Pessoa pessoa : pessoas) {
             if (pessoa instanceof Aluno) {
                 alunos.add((Aluno) pessoa);
@@ -46,7 +52,8 @@ public class Main {
             return;
         }
 
-        // Falta função de cadastro de treino para funcionar essa parte e todas de verificação de treino.
+        // Falta função de cadastro de treino para funcionar essa parte e todas de
+        // verificação de treino.
         if (treinos.isEmpty()) {
             System.out.println("Nenhum treino cadastrado.");
             return;
@@ -83,7 +90,8 @@ public class Main {
 
         alunoEscolhido.adicionarTreino(treinoEscolhido);
 
-        System.out.println("Treino: " + treinoEscolhido.getDescricao() + ". associado ao aluno: " + alunoEscolhido.getNome());
+        System.out.println(
+                "Treino: " + treinoEscolhido.getDescricao() + ". associado ao aluno: " + alunoEscolhido.getNome());
     }
 
     static void cadastrarAluno(Scanner scanner, List<Pessoa> pessoas) {
@@ -109,9 +117,40 @@ public class Main {
 
         Aluno aluno = new Aluno(nome, cpf, matricula);
 
-        // Adiciona na lista de pessoas que associa ao aluno (é criado na classe aluno de qualquer forma).
+        // Adiciona na lista de pessoas que associa ao aluno (é criado na classe aluno
+        // de qualquer forma).
         pessoas.add(aluno);
 
         System.out.println("Aluno cadastrado com sucesso.");
+    }
+
+    static void cadastrarInstrutor(Scanner scanner, List<Pessoa> pessoas) {
+
+        System.out.println("\n=== CADASTRAR INSTRUTOR ===");
+
+        System.out.print("Nome: ");
+        String nome = scanner.next();
+
+        System.out.print("CPF: ");
+        String cpf = scanner.next();
+
+        for (Pessoa pessoa : pessoas) {
+            // Verificação para ver se a pessoa (instrutor) já existe no sistema.
+            if (pessoa.getCpf().equals(cpf)) {
+                System.out.println("CPF já cadastrado.");
+                return;
+            }
+        }
+
+        System.out.print("CREF: ");
+        String cref = scanner.next();
+
+        // Criando o objeto Instrutor (considerando a versão com extends Pessoa)
+        Instrutor instrutor = new Instrutor(nome, cpf, cref);
+
+        // Adiciona na lista de pessoas (polimorfismo: Instrutor é uma Pessoa)
+        pessoas.add(instrutor);
+
+        System.out.println("Instrutor cadastrado com sucesso.");
     }
 }
