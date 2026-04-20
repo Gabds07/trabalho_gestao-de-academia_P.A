@@ -1,7 +1,7 @@
 public class Treino {
     private String descricao;
     private String nivel;
-    private String instrutorResponsavel;
+    private Instrutor instrutorResponsavel;
 
     public String getDescricao() {
         return this.descricao;
@@ -11,7 +11,7 @@ public class Treino {
         return this.nivel;
     }
 
-    public String instrutorResponsavel() {
+    public Instrutor getInstrutorResponsavel() {
         return this.instrutorResponsavel;
     }
 
@@ -23,7 +23,18 @@ public class Treino {
         this.nivel = nivel;
     }
 
-    public void setInstrutorResponsavel(String instrutorResponsavel) {
+    public void setInstrutorResponsavel(Instrutor instrutorResponsavel) {
         this.instrutorResponsavel = instrutorResponsavel;
+    }
+
+    public void exibirTreino() {
+        System.out.println("\n=== DADOS DO TREINO ===");
+        System.out.println("Descrição: " + this.descricao);
+        System.out.println("Nível: " + this.nivel);
+        if (this.instrutorResponsavel != null) {
+            System.out.println("Instrutor: " + instrutorResponsavel.getNome());
+        } else {
+            System.out.println("Instrutor: Não atribuído");
+        }
     }
 }
