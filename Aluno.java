@@ -36,5 +36,4 @@ public class Aluno extends Pessoa {
         super.exibirDados();
         System.out.println("Matrícula: " + this.matricula);
     }
-
 }
