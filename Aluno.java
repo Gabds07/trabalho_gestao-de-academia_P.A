@@ -83,6 +83,7 @@ public class Aluno extends Pessoa {
                 alunos.add((Aluno) pessoa);
             }
         }
+        
 
         if (alunos.isEmpty()) {
             System.out.println("Nenhum aluno cadastrado.");
@@ -97,14 +98,12 @@ public class Aluno extends Pessoa {
         }
 
         System.out.println("\nAlunos cadastrados:");
-        int k = 1;
         for (int i = 0; i < alunos.size(); i++) {
-            System.out.println(k + ". " + alunos.get(i).getNome() + " - Matrícula: " + alunos.get(i).getMatricula());
-            k++;
+            System.out.println(i + ". " + alunos.get(i).getNome() + " - Matrícula: " + alunos.get(i).getMatricula());
         }
 
         System.out.print("Escolha o número do aluno: ");
-        int numeroAluno = Integer.parseInt(scanner.next());
+        int numeroAluno = scanner.nextInt();
 
         if (numeroAluno < 0 || numeroAluno >= alunos.size()) {
             System.out.println("Opção inválida.");
@@ -117,7 +116,7 @@ public class Aluno extends Pessoa {
         }
 
         System.out.print("Escolha o número do treino: ");
-        int numeroTreino = Integer.parseInt(scanner.nextLine());
+        int numeroTreino = scanner.nextInt();
 
         if (numeroTreino < 0 || numeroTreino >= treinos.size()) {
             System.out.println("Opção inválida.");
@@ -131,5 +130,11 @@ public class Aluno extends Pessoa {
 
         System.out.println(
                 "Treino: " + treinoEscolhido.getDescricao() + ". associado ao aluno: " + alunoEscolhido.getNome());
+    
+        for (Pessoa pessoa : pessoas) {
+            if (pessoa instanceof Aluno) {
+                alunos.removeAll(alunos);
+            }
+        }
     }
 }

@@ -8,10 +8,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         List<Pessoa> pessoas = new ArrayList<>();
         List<Treino> treinos = new ArrayList<>();
-        List<Plano> plano = new ArrayList<>();
+        List<Plano> planos = new ArrayList<>();
         List<Aluno> alunos = new ArrayList<>();
+        List<Instrutor> instrutores = new ArrayList<>();
+
         Aluno aluno = new Aluno();
         Instrutor instrutor = new Instrutor();
+        Treino treino = new Treino();
+        Plano novoPlano = new Plano();
 
         do {
             System.out.println("\n=== SISTEMA DE GESTÃO DE ACADEMIA ===");
@@ -31,19 +35,24 @@ public class Main {
                     aluno.cadastrarAluno(scanner, pessoas, alunos);
                     break;
                 case 2:
-                    instrutor.cadastrarInstrutor(scanner, pessoas);
+                    instrutor.cadastrarInstrutor(scanner, pessoas, instrutores);
                     break;
                 case 3:
-                    Plano novoPlano = new Plano();
-                    novoPlano.cadastrarPlano();
+                    novoPlano.cadastrarPlano(planos);
                     System.out.println("Valor total do Plano: R$ " + novoPlano.calcularValorTotal());
-                    // Após cadastrar o plano e calcular o valor dele, adicionei ele na lista de
-                    // arrays
-                    plano.add(novoPlano);
                     break;
+                case 4:
+                    treino.criarTreino(instrutores, scanner, treinos);
                 case 5:
                     aluno.associarTreinoAluno(scanner, pessoas, treinos, alunos);
                     break;
+                case 7:
+                    novoPlano.exibirPlano(planos);
+                    break;
+                case 8:
+                    treino.exibirTreino(treinos);
+                    break;
+
                 default:
                     System.out.println("Selecione uma opção válida.");
                     break;

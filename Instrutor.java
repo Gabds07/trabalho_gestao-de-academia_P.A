@@ -36,7 +36,7 @@ public class Instrutor extends Pessoa {
         System.out.println("CREF: " + this.cref);
     }
 
-    public void cadastrarInstrutor(Scanner scanner, List<Pessoa> pessoas) {
+    public void cadastrarInstrutor(Scanner scanner, List<Pessoa> pessoas, List<Instrutor> instrutores) {
 
         System.out.println("\n=== CADASTRAR INSTRUTOR ===");
 
@@ -57,7 +57,7 @@ public class Instrutor extends Pessoa {
         System.out.print("CREF: ");
         String cref = scanner.next();
 
-        System.out.println("Especialidade: ");
+        System.out.print("Especialidade: ");
         String especialidade = scanner.next();
 
         // Criando o objeto Instrutor (considerando a versão com extends Pessoa)
@@ -65,6 +65,7 @@ public class Instrutor extends Pessoa {
 
         // Adiciona na lista de pessoas (polimorfismo: Instrutor é uma Pessoa)
         pessoas.add(instrutor);
+        instrutores.add(instrutor);
 
         System.out.println("Instrutor cadastrado com sucesso.");
     }

@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Plano {
@@ -41,14 +42,14 @@ public class Plano {
         this.duracaoMeses = duracaoMeses;
     }
 
-    public void cadastrarPlano() {
+    public void cadastrarPlano(List<Plano> plano) {
 
         double valor = 0;
         int duracaoMeses = 0;
 
         System.out.println("\n === CADASTRAR PLANO ===");
         System.out.print("\nInforme o nome do plano: ");
-        this.nomePlano = scanner.nextLine();
+        this.nomePlano = scanner.next();
         System.out.print("Informe o valor do plano: R$ ");
         valor = scanner.nextDouble();
 
@@ -72,6 +73,10 @@ public class Plano {
             this.duracaoMeses = duracaoMeses;
         }
 
+        Plano novoPlano = new Plano(nomePlano, valor, duracaoMeses);
+
+        plano.add(novoPlano);
+
         System.out.println("Plano Cadastrado com Sucesso!");
     }
 
@@ -81,6 +86,14 @@ public class Plano {
         calculo = this.duracaoMeses * this.valorMensal;
 
         return calculo;
+    }
 
+    public void exibirPlano(List<Plano> plano) {
+        for (int i = 0; i < plano.size(); i++) {
+            System.out.println("Plano: " + plano.get(i).getNomePlano()
+                    + " | Valor mensal: R$ " + String.format("%.2f", plano.get(i).getValorMensal())
+                    + " | Duração: " + plano.get(i).getDuracaoMeses() + " meses"
+                    + " | Total: R$ " + String.format("%.2f", plano.get(i).calcularValorTotal()));
+        }
     }
 }
