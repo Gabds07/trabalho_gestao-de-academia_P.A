@@ -27,6 +27,7 @@ public class Main {
             System.out.println("6 - Listar Pessoas");
             System.out.println("7 - Listar Planos");
             System.out.println("8 - Listar Treinos");
+            System.out.println("0 - Sair do sistema");
             System.out.print("Selecione uma opção: ");
             op = scanner.nextInt();
 
@@ -43,8 +44,20 @@ public class Main {
                     break;
                 case 4:
                     treino.criarTreino(instrutores, scanner, treinos);
+                    break;
                 case 5:
                     aluno.associarTreinoAluno(scanner, pessoas, treinos, alunos);
+                    break;
+                case 6:
+                    if (pessoas.isEmpty()) {
+                        System.out.println("Nenhuma pessoa foi encontrada");
+                    } else {
+                        System.out.println("\n=== Lista de Pessoas Cadastradas ===");
+                        for (Pessoa p1 : pessoas) {
+                            p1.exibirDados();
+                            System.out.println("------------------------------------");
+                        }
+                    }
                     break;
                 case 7:
                     novoPlano.exibirPlano(planos);
@@ -52,7 +65,9 @@ public class Main {
                 case 8:
                     treino.exibirTreino(treinos);
                     break;
-
+                case 0:
+                    System.out.println("Finalizando o sistema...");
+                    break;
                 default:
                     System.out.println("Selecione uma opção válida.");
                     break;

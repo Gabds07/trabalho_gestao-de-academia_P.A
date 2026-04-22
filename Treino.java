@@ -33,9 +33,9 @@ public class Treino {
 
     // validação do nível
     public void setNivel(String nivel) {
-        if (nivel.equalsIgnoreCase("Iniciante") ||
-                nivel.equalsIgnoreCase("Intermediário") ||
-                nivel.equalsIgnoreCase("Avançado")) {
+        if (nivel.equalsIgnoreCase("iniciante") ||
+                nivel.equalsIgnoreCase("intermediario") ||
+                nivel.equalsIgnoreCase("avancado")) {
 
             this.nivel = nivel;
         } else {
@@ -71,6 +71,11 @@ public class Treino {
         }
 
         System.out.println("\nInstrutores disponíveis:");
+
+        if(instrutores.isEmpty()) {
+            System.out.println("Sem instrutores disponíveis.");
+            return;
+        }
         for (int i = 0; i < instrutores.size(); i++) {
             System.out.println(i + " - " + instrutores.get(i).getNome());
         }
@@ -101,6 +106,7 @@ public class Treino {
             System.out.println("Descrição: " + treino.get(i).getDescricao());
             System.out.println("Nível: " + treino.get(i).getNivel());
             System.out.println("Instrutor: " + treino.get(i).getInstrutorResponsavel().getNome());
+            System.out.println("-------------------------------------");
         }
     }
 
